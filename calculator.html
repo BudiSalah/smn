@@ -8,31 +8,134 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        .content--desktop {
-            display: none;
+        .tab-head {
+            gap: 15px;
         }
 
-
-        .content--mobile {
-            display: flex;
+        .field-wrapper {
+            width: 100% !important;
+            flex: 0 0 100%;
+            max-width: none;
+            margin: 8px 0;
         }
 
-        .content--mobile .type-label,
-        .content--mobile .inputs-wrapper {
-            width: 80%;
+        .siblings-weapper {
+            width: 100%;
+            gap: 15px;
         }
 
-        .content--mobile .inputs-wrapper>div {
-            width: 50%;
+        .field-wrapper--siblings {
+            flex: 0 0 49% !important;
         }
 
-        @media screen and (min-width: 768px) {
-            .content--desktop {
-                display: flex;
+        .tab-content .unit-input {
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: none;
+        }
+
+        .tab-content .unit {
+            transform: translateX(-50px);
+        }
+
+        fieldset .nav-pills {
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: 1140px) and (min-width: 768px) {
+            .siblings-weapper {
+                width: 62% !important;
+                justify-content: space-around !important;
             }
 
-            .content--mobile {
-                display: none;
+            .field-wrapper--siblings {
+                flex: 0 0 30% !important;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .field-wrapper {
+                width: auto;
+            }
+        }
+
+
+        @media screen and (min-width: 768px) {
+
+            .cost-input::placeholder,
+            .unit-input::placeholder {
+                color: transparent;
+            }
+
+            .cost-input::-webkit-input-placeholder,
+            .unit-input::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+            .cost-input::-moz-placeholder,
+            .unit-input::-moz-placeholder {
+                color: transparent;
+            }
+
+            .cost-input:-moz-placeholder,
+            .unit-input:-moz-placeholder {
+                color: transparent;
+            }
+
+            .cost-input:-ms-input-placeholder,
+            .unit-input:-ms-input-placeholder {
+                color: transparent;
+            }
+
+            .field-wrapper {
+                width: 30%;
+                max-width: 250px;
+                flex: 0 0 30%;
+                margin: 0;
+            }
+
+            .tab-content .unit-input {
+                width: 100%;
+                max-width: 205px;
+                flex: 0 0 100%;
+                margin: 0;
+            }
+
+            .tab-content .unit {
+                transform: none;
+            }
+
+            .siblings-weapper {
+                width: 57%;
+            }
+
+            .field-wrapper--siblings {
+                flex: 0 0 50% !important;
+            }
+
+            fieldset .nav-pills {
+                margin-bottom: 0;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .field-wrapper--siblings {
+                flex: 0 0 47% !important;
+            }
+
+            fieldset .nav-pills {
+                text-align: center;
+                display: block;
+            }
+
+            fieldset .nav-pills .nav-item {
+                width: 55px;
+                display: inline-block;
+            }
+
+            fieldset .nav-pills .nav-item .nav-link {
+                border: none;
+                background-color: transparent;
             }
         }
     </style>
@@ -253,122 +356,152 @@
                                                     </a>
                                                 </li>
                                             </ul>
-
                                             <div class="tab-content" id="pills-tabContent">
                                                 <div class="tab-pane fade show active" id="pills-insta" role="tabpanel"
                                                     aria-labelledby="pills-insta-tab">
-                                                    <div class="content--desktop row justify-content-around">
-                                                        <div class="col-md-4 col-lg-3 item-2">
-                                                            <h3>Campaign Type (Desktop)</h3>
-                                                            <ul class="tab__inputs">
-                                                                <li><label class="type-label">Engagments</label></li>
-                                                                <li><label class="type-label">Website clicks</label>
-                                                                </li>
-                                                                <li><label class="type-label">Impressions</label></li>
-                                                                <li><label class="type-label">Video views</label></li>
-                                                                <li><label class="type-label">Install</label></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-md-4 col-lg-3 item-2">
+                                                    <div class="">
+                                                        <div
+                                                            class="tab-head d-none d-md-flex flex-row align-items-center justify-content-between">
+                                                            <h3>Campaign Type</h3>
                                                             <h3>Cost per resulte</h3>
-                                                            <ul class="tab__inputs">
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Engagments"></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Website clicks"></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Impressions"></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Video views"></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Install"></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-md-4 col-lg-3 item-2">
                                                             <h3>Results</h3>
-                                                            <ul class="tab__inputs">
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Engagments"><span class="unit">SAR</span>
-                                                                </li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Website clicks"><span
-                                                                        class="unit">SAR</span></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Impressions"><span class="unit">SAR</span>
-                                                                </li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Video views"><span class="unit">SAR</span>
-                                                                </li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Install"><span class="unit">SAR</span></li>
-
-                                                            </ul>
                                                         </div>
-                                                    </div>
 
-                                                    <script>
-                                                        const desktop = document.querySelector(".content--desktop")
-                                                        console.log(window.outerWidth);
-                                                        if (window.outerWidth <= 767) desktop.remove()
-                                                    </script>
-
-                                                    <div class="content--mobile row justify-content-around">
-                                                        <div class="col-md-4 col-lg-3 item-2">
-                                                            <h3>Campaign Type (mobile)</h3>
+                                                        <div class="">
                                                             <ul class="tab__inputs">
-                                                                <li class="d-flex flex-column">
-                                                                    <label class="type-label">Engagments</label>
+                                                                <li
+                                                                    class="d-flex flex-column flex-md-row align-items-center justify-content-around">
+                                                                    <div class="field-wrapper">
+                                                                        <label class="type-label">Engagments</label>
+                                                                    </div>
 
-                                                                    <div class="inputs-wrapper d-flex flex-row">
-                                                                        <div class="mt-3"><input type="number"
-                                                                                class="form-control" id="Engagments">
+                                                                    <div
+                                                                        class="siblings-weapper d-flex flex-row justify-content-between">
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings">
+                                                                            <input type="number"
+                                                                                class="cost-input form-control"
+                                                                                id="Engagments"
+                                                                                placeholder="Cost per resulte">
                                                                         </div>
 
                                                                         <div
-                                                                            class="d-flex flex-row align-items-center mt-3">
-                                                                            <input type="number" class="form-control"
-                                                                                id="Engagments"><span
+                                                                            class="field-wrapper field-wrapper--siblings d-flex flex-row align-items-center">
+                                                                            <input type="number"
+                                                                                class="unit-input form-control"
+                                                                                id="Engagments"
+                                                                                placeholder="Results"><span
                                                                                 class="unit">SAR</span>
                                                                         </div>
                                                                     </div>
                                                                 </li>
-                                                                <li><label class="type-label">Website clicks</label>
-                                                                </li>
-                                                                <li><label class="type-label">Impressions</label></li>
-                                                                <li><label class="type-label">Video views</label></li>
-                                                                <li><label class="type-label">Install</label></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-md-4 col-lg-3 item-2">
-                                                            <h3>Cost per resulte</h3>
-                                                            <ul class="tab__inputs">
 
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Website clicks"></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Impressions"></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Video views"></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Install"></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-md-4 col-lg-3 item-2">
-                                                            <h3>Results</h3>
-                                                            <ul class="tab__inputs">
+                                                                <li
+                                                                    class="d-flex flex-column flex-md-row align-items-center justify-content-around">
+                                                                    <div class="field-wrapper">
+                                                                        <label class="type-label">Website clicks</label>
+                                                                    </div>
 
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Website clicks"><span
-                                                                        class="unit">SAR</span></li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Impressions"><span class="unit">SAR</span>
-                                                                </li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Video views"><span class="unit">SAR</span>
-                                                                </li>
-                                                                <li><input type="number" class="form-control"
-                                                                        id="Install"><span class="unit">SAR</span></li>
+                                                                    <div
+                                                                        class="siblings-weapper d-flex flex-row justify-content-between">
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings">
+                                                                            <input type="number"
+                                                                                class="cost-input form-control"
+                                                                                id="Website clicks"
+                                                                                placeholder="Cost per resulte">
+                                                                        </div>
 
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings d-flex flex-row align-items-center">
+                                                                            <input type="number"
+                                                                                class="unit-input form-control"
+                                                                                id="Website clicks"
+                                                                                placeholder="Results"><span
+                                                                                class="unit">SAR</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li
+                                                                    class="d-flex flex-column flex-md-row align-items-center justify-content-around">
+                                                                    <div class="field-wrapper">
+                                                                        <label class="type-label">Impressions</label>
+                                                                    </div>
+
+                                                                    <div
+                                                                        class="siblings-weapper d-flex flex-row justify-content-between">
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings">
+                                                                            <input type="number"
+                                                                                class="cost-input form-control"
+                                                                                id="Impressions"
+                                                                                placeholder="Cost per resulte">
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings d-flex flex-row align-items-center">
+                                                                            <input type="number"
+                                                                                class="unit-input form-control"
+                                                                                id="Impressions"
+                                                                                placeholder="Results"><span
+                                                                                class="unit">SAR</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li
+                                                                    class="d-flex flex-column flex-md-row align-items-center justify-content-around">
+                                                                    <div class="field-wrapper">
+                                                                        <label class="type-label">Video views</label>
+                                                                    </div>
+
+                                                                    <div
+                                                                        class="siblings-weapper d-flex flex-row justify-content-between">
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings">
+                                                                            <input type="number"
+                                                                                class="cost-input form-control"
+                                                                                id="Video views"
+                                                                                placeholder="Cost per resulte">
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings d-flex flex-row align-items-center">
+                                                                            <input type="number"
+                                                                                class="unit-input form-control"
+                                                                                id="Video views"
+                                                                                placeholder="Results"><span
+                                                                                class="unit">SAR</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li
+                                                                    class="d-flex flex-column flex-md-row align-items-center justify-content-around">
+                                                                    <div class="field-wrapper">
+                                                                        <label class="type-label">Install</label>
+                                                                    </div>
+
+                                                                    <div
+                                                                        class="siblings-weapper d-flex flex-row justify-content-between">
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings">
+                                                                            <input type="number"
+                                                                                class="cost-input form-control"
+                                                                                id="Install"
+                                                                                placeholder="Cost per resulte">
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="field-wrapper field-wrapper--siblings d-flex flex-row align-items-center">
+                                                                            <input type="number"
+                                                                                class="unit-input form-control"
+                                                                                placeholder="Results" id="Install"><span
+                                                                                class="unit">SAR</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -399,7 +532,7 @@
                                             <label class="label-col" for="number" style="font-size: 17px;">Total</label>
                                             <div class="d-flex align-items-center">
                                                 <input id="TXT_total" type="number" class="form-control disabled"
-                                                    readonly><span class="unit" style="font-size: 17px;">SAR</span>
+                                                    readonly><span class="unit mx-2" style="font-size: 17px;">SAR</span>
                                             </div>
                                         </div>
                                     </div>
