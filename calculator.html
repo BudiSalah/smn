@@ -5,6 +5,7 @@
     <title>smn</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="css/selectize.css">
     <link rel="stylesheet" href="css/style.css">
 
     <style>
@@ -28,6 +29,10 @@
             flex: 0 0 49% !important;
         }
 
+        .tab__inputs li:not(.active) {
+            display: none !important;
+        }
+
         .tab-content .unit-input {
             width: 100%;
             flex: 0 0 100%;
@@ -40,6 +45,16 @@
 
         fieldset .nav-pills {
             margin-bottom: 15px;
+        }
+
+        .item {
+            background: #1363ac !important;
+            color: #fff !important;
+            border-radius: 4px;
+        }
+
+        .item .remove-btn {
+            margin: 4px;
         }
 
         @media screen and (max-width: 1140px) and (min-width: 768px) {
@@ -142,7 +157,6 @@
 </head>
 
 <body>
-
     <div class="content">
         <!--==============================Start Hero area ==============================-->
         <!--==============================Start Header ==============================-->
@@ -311,7 +325,6 @@
                                 <fieldset>
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-
                                             <ul class="nav nav-pills" id="pills-tab" role="tablist">
                                                 <li class="nav-item" role="presentation">
                                                     <a class="nav-link active" id="pills-insta-tab" data-toggle="pill"
@@ -368,6 +381,19 @@
                                                         </div>
 
                                                         <div class="">
+                                                            <label for="input-tags">Campaigns Type</label>
+
+                                                            <select id="input-tags" name="state[]" multiple="multiple"
+                                                                class="demo-default selectized mb-4"
+                                                                style="width: 50%; display: none;"
+                                                                placeholder="Select campaigns type...">
+                                                                <option value="Engagments">Engagments</option>
+                                                                <option value="Website">Website</option>
+                                                                <option value="Impressions">Impressions</option>
+                                                                <option value="Video">Video</option>
+                                                                <option value="Install">Install</option>
+                                                            </select>
+
                                                             <ul class="tab__inputs">
                                                                 <li
                                                                     class="d-flex flex-column flex-md-row align-items-center justify-content-around">
@@ -769,8 +795,62 @@
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
         </div>
+
         <script src="js/all.js"></script>
         <script src="js/PricingTool.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microplugin/0.0.3/microplugin.min.js"
+            integrity="sha512-7amIsiQ/hxbdPNawBZwmWBWPiwQRNEJlxTj6eVO+xmWd71fs79Iydr4rYARHwDf0rKHpysFxWbj64fjPRHbqfA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sifter/0.5.4/sifter.min.js"
+            integrity="sha512-B60IUvYpG4cibCeQ30J8k/+qtN+fxKAIENb3DL2DVdzIt76IDIynAt92chPEwlCuKejOt//+OZL61i1xsvCIDQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="js/selectize.min.js"></script>
+        <script>
+            jQuery("document").ready(function () {
+                let listItems = Array.from(jQuery(".tab__inputs li"))
+
+                for (let item of listItems) {
+                    item.classList.add("active")
+                }
+
+                let input = jQuery('#input-tags')
+                let $select = input.selectize();
+                let selectize = $select[0].selectize;
+
+                selectize.on('item_add', function (value, $item) {
+                    $item.context.innerHTML = `<span>${value}</span><i data-value="${value}" class="remove-btn">x</i>`
+                });
+
+                selectize.on('change', function (value) {
+                    let selectedVal = input.val()
+
+                    if (!selectedVal) {
+                        for (let item of listItems) {
+                            item.classList.add("active")
+                        }
+
+                        return
+                    }
+
+                    for (let item of listItems) {
+                        item.classList.remove("active")
+                    }
+
+                    for (let item of selectedVal) {
+                        jQuery(`[id^=${item}]`).closest("li")[0].classList.add("active")
+                    }
+                });
+
+                jQuery(".selectize-control").on("click", ({ target }) => {
+                    if (target.classList.contains("remove-btn")) {
+                        const value = jQuery(target).attr("data-value")
+                        selectize.removeItem(value)
+                        selectize.refreshItems()
+                        selectize.refreshOptions()
+                    }
+                })
+            })
+        </script>
     </div>
 </body>
 
